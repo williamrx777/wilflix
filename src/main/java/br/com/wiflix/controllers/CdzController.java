@@ -55,7 +55,7 @@ public class CdzController {
         }else{
             var episodio = update.get();
             BeanUtils.copyProperties(cdzDTO, episodio);
-            return ResponseEntity.status(HttpStatus.OK).body(episodio);
+            return ResponseEntity.status(HttpStatus.OK).body(repository.save(episodio));
         }
     }
     @Operation(summary = "Deletar episodio")
