@@ -5,4 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 
 public record FilmeDTO(@NotBlank String nome,@NotBlank String url) {
 
+
+
+
+
 }

@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -37,7 +38,7 @@ public class FilmeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(filmeRepository.save(filme));
     }
     @Operation(summary = "Buscar filme")
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity getOne(@PathVariable String id){
         Optional<Filme> filme = filmeRepository.findById(id);
         if (filme.isEmpty()){

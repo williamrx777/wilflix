@@ -10,8 +10,6 @@ import lombok.Setter;
 @Table
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Cdz {
 
     @Id
