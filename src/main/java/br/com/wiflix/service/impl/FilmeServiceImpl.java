@@ -1,6 +1,7 @@
 package br.com.wiflix.service.impl;
 
 import br.com.wiflix.dtos.FilmeDTO;
+import br.com.wiflix.exception.FilmeNotFoundException;
 import br.com.wiflix.mapper.FilmeMapper;
 import br.com.wiflix.repositories.FilmeRepository;
 import br.com.wiflix.service.FilmeService;
@@ -32,7 +33,7 @@ public class FilmeServiceImpl implements FilmeService {
 
     @Override
     public FilmeDTO getOne(String id) {
-        return filmeRepository.findById(id).map(filmeMapper::toDTO).orElseThrow();
+        return filmeRepository.findById(id).map(filmeMapper::toDTO).orElseThrow(() -> new FilmeNotFoundException(id));
     }
 
     @Override
@@ -42,7 +43,7 @@ public class FilmeServiceImpl implements FilmeService {
                     f.setNome(filmeDTO.nome());
                     f.setUrl(filmeDTO.url());
                     return filmeMapper.toDTO(filmeRepository.save(f));
-                }).orElseThrow();
+                }).orElseThrow(() -> new FilmeNotFoundException(id));
     }
 
     @Override

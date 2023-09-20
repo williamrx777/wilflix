@@ -41,12 +41,12 @@ public class CdzController {
     }
     @Operation(summary = "Buscar episodio")
     @GetMapping("/{id}")
-    public ResponseEntity<CdzDTO> getOne(@PathVariable Long id){
+    public ResponseEntity<CdzDTO> getOne(@PathVariable Long id) {
        return ResponseEntity.ok(cdzService.getOne(id));
     }
     @Operation(summary = "Atualiza episodio")
     @PutMapping("/{id}")
-    public ResponseEntity<CdzDTO> update(@PathVariable Long id, @RequestBody @Valid CdzDTO cdzDTO){
+    public ResponseEntity<CdzDTO> update(@PathVariable Long id, @RequestBody @Valid CdzDTO cdzDTO) {
         return ResponseEntity.ok(cdzService.update(id, cdzDTO));
     }
     @Operation(summary = "Deletar episodio")

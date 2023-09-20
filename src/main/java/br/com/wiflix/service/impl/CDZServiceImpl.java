@@ -1,6 +1,7 @@
 package br.com.wiflix.service.impl;
 
 import br.com.wiflix.dtos.CdzDTO;
+import br.com.wiflix.exception.RecordNotFoundException;
 import br.com.wiflix.mapper.CDZMapper;
 import br.com.wiflix.repositories.CdzRepository;
 import br.com.wiflix.service.CdzService;
@@ -18,8 +19,6 @@ public class CDZServiceImpl implements CdzService {
         this.cdzMapper = cdzMapper;
     }
 
-
-
     @Override
     public List<CdzDTO> findAll() {
         return cdzRepository.findAll().stream().map(cdzMapper::toDTO).toList();
@@ -32,7 +31,7 @@ public class CDZServiceImpl implements CdzService {
 
     @Override
     public CdzDTO getOne(Long id) {
-        return cdzRepository.findById(id).map(cdzMapper::toDTO).orElseThrow();
+        return cdzRepository.findById(id).map(cdzMapper::toDTO).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     @Override
@@ -41,11 +40,11 @@ public class CDZServiceImpl implements CdzService {
                 .map(c -> {
                     c.setUrl(cdzDTO.url());
                     return cdzMapper.toDTO(cdzRepository.save(c));
-                }).orElseThrow();
+                }).orElseThrow(() -> new RecordNotFoundException(id));
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(Long id)  {
         cdzRepository.deleteById(id);
     }
 }
