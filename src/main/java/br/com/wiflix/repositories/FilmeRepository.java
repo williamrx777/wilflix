@@ -1,6 +1,6 @@
 package br.com.wiflix.repositories;
 
-import br.com.wiflix.entities.Filme;
+import br.com.wiflix.entity.Filme;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

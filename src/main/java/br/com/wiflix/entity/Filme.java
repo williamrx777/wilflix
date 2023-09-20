@@ -1,4 +1,4 @@
-package br.com.wiflix.entities;
+package br.com.wiflix.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,6 +10,8 @@ import lombok.Setter;
 @Table(name = "filmes")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Filme {
 
     @Id
