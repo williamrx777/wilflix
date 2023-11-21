@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class FilmeMapper {
 
     public FilmeDTO toDTO(Filme filme){
-        return new FilmeDTO(filme.getId(), filme.getNome(), filme.getUrl());
+        return new FilmeDTO(filme.getId(), filme.getNome(), filme.getImagem(), filme.getUrl());
     }
 
 
@@ -16,6 +16,7 @@ public class FilmeMapper {
         Filme filme = new Filme();
         filme.setId(filmeDTO.id());
         filme.setNome(filmeDTO.nome());
+        filme.setImagem(filmeDTO.imagem());
         filme.setUrl(filmeDTO.url());
         return filme;
     }

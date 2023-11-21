@@ -40,7 +40,9 @@ public class FilmeServiceImpl implements FilmeService {
     public FilmeDTO update(String id, FilmeDTO filmeDTO) {
         return filmeRepository.findById(id)
                 .map(f -> {
+                    f.setId(filmeDTO.id());
                     f.setNome(filmeDTO.nome());
+                    f.setImagem(filmeDTO.imagem());
                     f.setUrl(filmeDTO.url());
                     return filmeMapper.toDTO(filmeRepository.save(f));
                 }).orElseThrow(() -> new FilmeNotFoundException(id));

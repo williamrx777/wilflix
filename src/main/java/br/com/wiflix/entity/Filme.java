@@ -18,6 +18,7 @@ public class Filme {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String nome;
+    private String imagem;
     private String url;
 
 }
